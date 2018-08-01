@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>170</y>
+      <w>470</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>/Clases::Licencia/
+--
+#dniEmpleado: int
+#cantDias: int
+#fechaInicio: java.lang.String
+#fechaFin: java.lang.String
+#estadoDeLicencia: java.lang.String
+--
++Licencia(int, int, java.lang.String, java.lang.String, java.lang.String): ctor
++dniEmpleado(): int
++getCantDias(): int
++getFechaInicio(): java.lang.String
++getFechaFin(): java.lang.String
++getEstadoDeLicencia(): java.lang.String
++setDniEmpleado(int): void
++setCantDias(int): void
++setFechaInicio(java.lang.String): void
++setFechaFin(java.lang.String): void
++setEstadoDeLicencia(java.lang.String): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>870</x>
+      <y>660</y>
+      <w>560</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>Clases::Vacaciones
+--
+-vacacionesLegales: int
+-antiguedad: int
+-periodoVacacion: int
+--
++Vacaciones(int, int, int, int, int, java.lang.String, java.lang.String, java.lang.String): ctor
++getVacacionesLegales(): int
++antiguedad(): int
++periodoVacacion(): int
++setVacacioensLegales(int): void
++setAntiguedad(int): void
++setPeriodoVacacion(int): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1120</x>
+      <y>210</y>
+      <w>410</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>Clases::Operaciones
+--
+-objArrLicencia: java.util.ArrayList
+-objArrVacaciones: java.util.ArrayList
+--
+~Operaciones(): ctor
++Operaciones(): ctor
++Insertar_Licencia_Especial(Clases.LicenciaEspecial): boolean
++Insertar_Vacaciones(Clases.Vacaciones): boolean
++Eliminar_Pedido(): boolean
++Obtener_Lista_Licencia(): java.util.ArrayList
++Obtener_Lista_Vacaciones(): java.util.ArrayList
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>680</y>
+      <w>730</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Clases::LicenciaEspecial
+--
+-motivoDeLicencia: java.lang.String
+-justificacionLicencia: java.lang.String
+--
++LicenciaEspecial(java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, java.lang.String): ctor
++getMotivoDeLicencia(): java.lang.String
++getJustificacionLicencia(): java.lang.String
++setMotivoDeLicencia(java.lang.String): void
++setJustificacionLicencia(java.lang.String): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>490</y>
+      <w>340</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;320.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>490</y>
+      <w>350</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>330.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>300</y>
+      <w>180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+</diagram>
