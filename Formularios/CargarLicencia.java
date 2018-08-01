@@ -28,7 +28,7 @@ public class CargarLicencia extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
-    //M√©todo privado para Limpiar los campos de Licencia
+    //MÈtodo privado para Limpiar los campos de Licencia
     	private void Limpiar_Campos(){
     		dniEmpleadoValue.setText("");
     		motivoLicenciaValue.setSelectedIndex(0);
@@ -39,51 +39,51 @@ public class CargarLicencia extends javax.swing.JFrame {
     		justificarValue.setText("");
     	}
 
-         //M√®todo para validar que los campos tengan informaci√≥n
+         //MÈtodo para validar que los campos tengan informaci√≥n
     	private boolean ValidarCampos(){
     		if (dniEmpleadoValue.getText().length() == 0){
     			JOptionPane.showMessageDialog(null,"Ingrese el Dni",
-    			"ArrayList",JOptionPane.ERROR_MESSAGE);
+    			"Error",JOptionPane.ERROR_MESSAGE);
     			dniEmpleadoValue.requestFocus();
-    			return (false);
+    			return false;
     		}
         
     		if (motivoLicenciaValue.getSelectedIndex()== 0){
     			JOptionPane.showMessageDialog(null,"Ingrese el Motivo de su Licencia",
-    			"ArrayList",JOptionPane.ERROR_MESSAGE);
+    			"Error",JOptionPane.ERROR_MESSAGE);
     			motivoLicenciaValue.requestFocus();
     		return false;
     		}
         
     		if (diasValue.getText().length() == 0){
-    			JOptionPane.showMessageDialog(null,"Ingrese la Cantidad de D√≠as",
-    			"ArrayList",JOptionPane.ERROR_MESSAGE);
+    			JOptionPane.showMessageDialog(null,"Ingrese la Cantidad de DÌas",
+    			"Error",JOptionPane.ERROR_MESSAGE);
     			diasValue.requestFocus();
     			return false;
     		}
         
     		if (inicioValue.getText().length() == 0){
     			JOptionPane.showMessageDialog(null,"Ingrese la Fecha de Inicio",
-    			"ArrayList",JOptionPane.ERROR_MESSAGE);
+    			"Error",JOptionPane.ERROR_MESSAGE);
     			inicioValue.requestFocus();
     			return false;
     		}
             if (finValue.getText().length() == 0){
             	JOptionPane.showMessageDialog(null,"Ingrese la Fecha de Fin",
-            	"ArrayList",JOptionPane.ERROR_MESSAGE);
+            	"Error",JOptionPane.ERROR_MESSAGE);
             	finValue.requestFocus();
             	return false;
             }
 	
             if (estadoDeLicenciaValue.getSelectedIndex()== 0){
             	JOptionPane.showMessageDialog(null,"Ingrese el estado en el que se encuentran",
-            	"ArrayList",JOptionPane.ERROR_MESSAGE);
+            	"Error",JOptionPane.ERROR_MESSAGE);
             	estadoDeLicenciaValue.requestFocus();
             	return false;
             }
         if (justificarValue.getText().length() == 0){
             	JOptionPane.showMessageDialog(null,"Justifique su Licencia",
-            	"ArrayList",JOptionPane.ERROR_MESSAGE);
+            	"Error",JOptionPane.ERROR_MESSAGE);
             	justificarValue.requestFocus();
             	return false;
         }
@@ -156,7 +156,7 @@ public class CargarLicencia extends javax.swing.JFrame {
         motivoLicenciaValue.addItem("Motivo de Licencia");
         motivoLicenciaValue.addItem("Maternidad");
         motivoLicenciaValue.addItem("Enfermedad");
-        motivoLicenciaValue.addItem("DÌa de Ex·men");
+        motivoLicenciaValue.addItem("DÌa de Examen");
         
         justificarValue.setColumns(20);
         justificarValue.setRows(5);
@@ -268,12 +268,12 @@ public class CargarLicencia extends javax.swing.JFrame {
                 //Invocamos el m√©todo Insertar del Objeto Operaciones
                 	if (objOperaciones.Insertar_Licencia_Especial(objLicenciaEspecial)){
                 		JOptionPane.showMessageDialog(null,"Licencia Cargada Correctamente",
-                        "ArrayList",JOptionPane.INFORMATION_MESSAGE);
+                        "Lincencia Cargada",JOptionPane.INFORMATION_MESSAGE);
                 		//Limpiamos los Campos
                 		Limpiar_Campos();
                     }
                 	else{
-                        JOptionPane.showMessageDialog(null,"Ocurrio un error", "ArrayList",JOptionPane.ERROR_MESSAGE);   
+                        JOptionPane.showMessageDialog(null,"Ocurrio un error", "Error!",JOptionPane.ERROR_MESSAGE);   
                         }
     }//GEN-LAST:event_guardarLicenciaActionPerformed
 

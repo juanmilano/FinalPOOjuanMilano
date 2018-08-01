@@ -40,14 +40,6 @@ public class Operaciones {
     public ArrayList<Vacaciones> Obtener_Lista_Vacaciones (){
         return (objArrVacaciones);
     }    
-
-
-    
-    
-    
-       
-    
-    
-    
+  
     
 }

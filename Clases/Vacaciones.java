@@ -21,7 +21,7 @@ public class Vacaciones extends Licencia {
     this.antiguedad = antiguedad;
     this.periodoVacacion = periodoVacacion;
     }
-    //Getteress//
+    //Getters//
     public int getVacacionesLegales(){
     return vacacionesLegales;
     }

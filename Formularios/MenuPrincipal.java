@@ -58,7 +58,7 @@ public class MenuPrincipal extends JFrame {
             }
         });
 
-        listadoPedidos.setText("Listado de Pedidos");
+        listadoPedidos.setText("Ver mis Pedidos");
         listadoPedidos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 listadoPedidosActionPerformed(evt);

@@ -11,6 +11,8 @@ import Clases.Operaciones;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
  *
@@ -37,9 +39,11 @@ public class ListaPedidos extends javax.swing.JFrame {
         Operaciones objOperaciones = new Operaciones();
         
         ArrayList <LicenciaEspecial> objLicenciaEspecial;
+        ArrayList <Vacaciones> objVacaciones;
 
         
         objLicenciaEspecial = objOperaciones.Obtener_Lista_Licencia ();
+        objVacaciones = objOperaciones.Obtener_Lista_Vacaciones();
 
         
         //Declaramos un Objeto DefaultTableModel para llenar la Tabla 
@@ -60,7 +64,22 @@ public class ListaPedidos extends javax.swing.JFrame {
         }
     
             
-    }   
+    
+        for (Vacaciones elemento : objVacaciones){
+            //Declaramos un Arreglo para almanecar los datos de cada empleado que estan en el ArrayList
+            Object[] rowData = {elemento.dniEmpleado(),
+                           elemento.getCantDias(),
+                           elemento.getFechaInicio(),
+                           elemento.getFechaFin(),
+                           elemento.getEstadoDeLicencia(),
+                           elemento.periodoVacacion(),
+                          };
+            		   
+	    modelo.addRow(rowData);
+        }
+    
+            
+    } 
   
 
     /**
@@ -74,7 +93,6 @@ public class ListaPedidos extends javax.swing.JFrame {
         Pedidos = new javax.swing.JScrollPane();
         tablePedidos = new JTable();
         jLabel1 = new JLabel();
-        jButton1 = new JButton();
         jButton2 = new JButton();
         jButton3 = new JButton();
 
@@ -83,7 +101,7 @@ public class ListaPedidos extends javax.swing.JFrame {
         tablePedidos.setModel(new DefaultTableModel(
             new Object [][] {},
             new String [] {
-                "Dni Empleado", "Cantidad Dias", "Fecha Inicio", "Fecha Fin", "Estado", "Motivo de Licencia"
+                "Dni Empleado", "Cantidad Dias", "Fecha Inicio", "Fecha Fin", "Estado", "Motivo"
             }
         ));
         Llenar_Lista_Pedidos();
@@ -92,8 +110,6 @@ public class ListaPedidos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Lista de Pedidos");
         jLabel1.setToolTipText("");
-
-        jButton1.setText("Eliminar Pedido");
 
         jButton2.setText("Volver al Menú");
         jButton2.addActionListener(new ActionListener() {
@@ -108,42 +124,71 @@ public class ListaPedidos extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        
+        JButton btnEliminarPedido = new JButton();
+        btnEliminarPedido.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		if (tablePedidos.getRowCount()> 0){
+                    
+                    if (tablePedidos.getSelectedRow() != -1){
+                        
+                        if (JOptionPane.showConfirmDialog (null, "Desea eliminar este Pedido?", "Advertencia", 
+                                JOptionPane.YES_NO_OPTION)== JOptionPane.NO_OPTION)
+                            return;
+                        
+                        //Elimina el Empleado de la Lista
+                        //Declara un Objeto del Tipo DefaultTableModel
+                        DefaultTableModel modelo = (DefaultTableModel) tablePedidos.getModel();
+                        modelo.removeRow(tablePedidos.getSelectedRow());
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Debe seleccionar un Pedido de la Lista" ,
+                                    "Error",JOptionPane.ERROR_MESSAGE);
+                    }
+                    
+                }else{
+                   JOptionPane.showMessageDialog(null,"No existen Pedidos en la Lista" ,
+                                    "Error",JOptionPane.ERROR_MESSAGE); 
+                }
+        	}
+        });
+        btnEliminarPedido.setText("Eliminar Pedido");
 
         GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(Pedidos)
-            .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(391, 391, 391))
-            .addGroup(layout.createSequentialGroup()
-            .addGap(91, 91, 91)
-            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(97, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        					.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+        					.addGap(391))
+        				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        					.addComponent(btnEliminarPedido, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)
+        					.addGap(18)
+        					.addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)
+        					.addGap(33)
+        					.addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)
+        					.addGap(79))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(Pedidos, GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE)
+        					.addContainerGap())))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-            .addGap(13, 13, 13)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(Pedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-            .addComponent(jButton1)
-            .addComponent(jButton2)
-            .addComponent(jButton3))
-            .addGap(24, 24, 24))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(13)
+        			.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(Pedidos, GroupLayout.PREFERRED_SIZE, 397, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jButton3)
+        				.addComponent(jButton2)
+        				.addComponent(btnEliminarPedido))
+        			.addGap(24))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -196,10 +241,8 @@ public class ListaPedidos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JScrollPane Pedidos;
-    private JButton jButton1;
     private JButton jButton2;
     private JButton jButton3;
     private JLabel jLabel1;
     private JTable tablePedidos;
-    // End of variables declaration//GEN-END:variables
 }

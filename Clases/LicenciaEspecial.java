@@ -19,14 +19,14 @@ public class LicenciaEspecial extends Licencia {
         this.motivoDeLicencia = motivoDeLicencia;
         this.justificacionLicencia = justificacionLicencia;
     }
-    //Getters
+    //Getters//
     	public String getMotivoDeLicencia (){
     		return (motivoDeLicencia);
     	}
     	public String getJustificacionLicencia(){
     		return (justificacionLicencia);
     	}
-    //Setters
+    //Setters//
     	public void setMotivoDeLicencia (String tipo){
     		motivoDeLicencia = tipo;    
     	}

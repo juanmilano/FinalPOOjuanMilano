@@ -40,61 +40,55 @@ public class CargarVacaciones extends JFrame {
         		
     } 
     
-       //M√©todo para validar que los campos tengan informaci√≥n//
+       //MÈtodo para validar que los campos tengan informaci√≥n//
     private boolean ValidarCampos(){
         boolean estado = true;       
         if (dniEmpleadoValue.getText().length() == 0){
             JOptionPane.showMessageDialog(null,"Ingrese el Dni",
-            "ArrayList",JOptionPane.ERROR_MESSAGE);
+            "Error",JOptionPane.ERROR_MESSAGE);
             dniEmpleadoValue.requestFocus();
             estado = false;
         }
         
         if (diasValue.getText().length() == 0){
             JOptionPane.showMessageDialog(null,"Ingrese la Cantidad de DÌas",
-            "ArrayList",JOptionPane.ERROR_MESSAGE);
+            "Error",JOptionPane.ERROR_MESSAGE);
             diasValue.requestFocus();
             estado = false;
         }
         
         if (inicioValue.getText().length() == 0){
             JOptionPane.showMessageDialog(null,"Ingrese la Fecha de Inicio",
-            "ArrayList",JOptionPane.ERROR_MESSAGE);
+            "Error",JOptionPane.ERROR_MESSAGE);
             inicioValue.requestFocus();
             estado = false;
         }
         
         if (finValue.getText().length() == 0){
             JOptionPane.showMessageDialog(null,"Ingrese la Fecha de Fin",
-            "ArrayList",JOptionPane.ERROR_MESSAGE);
+            "Error",JOptionPane.ERROR_MESSAGE);
             finValue.requestFocus();
             estado = false;
         }
         
         if (periodoValue.getText().length() == 0){
             JOptionPane.showMessageDialog(null,"Ingrese el Periodo al que corresponden",
-            "ArrayList",JOptionPane.ERROR_MESSAGE);
+            "Error",JOptionPane.ERROR_MESSAGE);
             periodoValue.requestFocus();
             estado = false;
         }    
-	/**
-        if (jTextField1.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null,"Ingrese la Antiguedad",
-            "ArrayList",JOptionPane.ERROR_MESSAGE);
-	    jTextField1.requestFocus();
-	    return false;
-	}**/
-        
+
+   
         if (semanasValue.getText().length() == 0){
             JOptionPane.showMessageDialog(null,"Ingrese la Cantidad de Semanas",
-            "ArrayList",JOptionPane.ERROR_MESSAGE);
+            "Error",JOptionPane.ERROR_MESSAGE);
             semanasValue.requestFocus();
             estado = false;
         }
         
         if (estadoVacacionesValue.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null,"Ingrese el estado en el que se encuentran",
-            "ArrayList",JOptionPane.ERROR_MESSAGE);
+            "Error",JOptionPane.ERROR_MESSAGE);
             estadoVacacionesValue.requestFocus();
             estado = false;
         }
@@ -310,7 +304,7 @@ public class CargarVacaciones extends JFrame {
     }//GEN-LAST:event_volverMenuActionPerformed
 
     private void guardarVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVacacionesActionPerformed
-       		//Invocamos el m√®todo validar campos		
+       		//Invocamos el mÈtodo validar campos		
 		if (ValidarCampos()==false){
                     return;
                 }
@@ -326,14 +320,14 @@ public class CargarVacaciones extends JFrame {
                                                  estadoVacacionesValue.getSelectedItem().toString()
                  
                  );
-                        //Invocamos el m√©todo Insertar del Objeto Operaciones
+                        //Invocamos el mÈtodo Insertar del Objeto Operaciones
                         if (objOperaciones.Insertar_Vacaciones(objVacaciones)){
                             JOptionPane.showMessageDialog(null,"Sus vacaciones se han cargado correctamente",
-                                                          "ArrayList",JOptionPane.INFORMATION_MESSAGE);
+                                                          "Vacaciones Cargadas",JOptionPane.INFORMATION_MESSAGE);
                             //Limpiamos los Campos
                             Limpiar_Campos();
                         }else{
-                             JOptionPane.showMessageDialog(null,"Ocurrio un error", "ArrayList",JOptionPane.ERROR_MESSAGE);   
+                             JOptionPane.showMessageDialog(null,"Ocurrio un error", "Error",JOptionPane.ERROR_MESSAGE);   
                         }
     }//GEN-LAST:event_guardarVacacionesActionPerformed
 
